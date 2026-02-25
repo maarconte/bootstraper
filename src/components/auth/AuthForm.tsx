@@ -10,7 +10,7 @@ interface AuthFormProps {
 }
 
 
-export const AuthForm: React.FC<AuthFormProps> = ({ mode : any }) => {
+export const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
