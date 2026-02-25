@@ -34,7 +34,7 @@ export const CodeDetails: React.FC = () => {
   if (loading) {
     return (
       <Container>
-        <div className="brutal-border bg-[#E5E5E5] h-96 animate-pulse" />
+        <div className="brutal-border bg-[var(--brutal-gray)] h-96 animate-pulse" />
       </Container>
     );
   }
@@ -110,13 +110,13 @@ export const CodeDetails: React.FC = () => {
           {/* Code Card */}
           <div className="brutal-border bg-white brutal-shadow">
             {/* Header */}
-            <div className="border-b-4 border-black p-6 bg-[#E5E5E5]">
+            <div className="border-b-4 border-black p-6 bg-[var(--brutal-gray)]">
               <div className="flex items-start justify-between mb-4">
                 <Badge variant="category" category={code.category}>
                   {code.category}
                 </Badge>
                 {code.rating_count && code.rating_count > 0 && (
-                  <div className="flex items-center space-x-2 brutal-border bg-[#FF6B00] px-3 py-2">
+                  <div className="flex items-center space-x-2 brutal-border bg-[var(--brutal-orange)] px-3 py-2">
                     <Star className="w-5 h-5 fill-black" />
                     <span className="font-mono font-bold text-lg">
                       {code.average_rating?.toFixed(1)}
@@ -140,7 +140,7 @@ export const CodeDetails: React.FC = () => {
                 <p className="font-mono leading-relaxed">{code.description}</p>
               </div>
 
-              <div className="brutal-border bg-[#FF6B00] p-4">
+              <div className="brutal-border bg-[var(--brutal-orange)] p-4">
                 <p className="font-mono font-bold text-2xl uppercase text-center">
                   {code.discount}
                 </p>
@@ -152,14 +152,14 @@ export const CodeDetails: React.FC = () => {
                 </code>
                 <button
                   onClick={handleCopy}
-                  className="ml-4 brutal-border bg-black text-white p-3 hover:bg-[#FF6B00] hover:text-black transition-all"
+                  className="ml-4 brutal-border bg-black text-white p-3 hover:bg-[var(--brutal-orange)] hover:text-black transition-all"
                 >
                   <Copy className="w-6 h-6" />
                 </button>
               </div>
 
               {copied && (
-                <p className="font-mono text-center text-[#FF6B00] font-bold text-lg animate-brutal-pop">
+                <p className="font-mono text-center text-[var(--brutal-orange)] font-bold text-lg animate-brutal-pop">
                   ✓ CODE COPIÉ !
                 </p>
               )}
@@ -178,7 +178,7 @@ export const CodeDetails: React.FC = () => {
           {/* Rating Form */}
           {user && (
             <div className="brutal-border bg-white brutal-shadow">
-              <div className="border-b-4 border-black p-4 bg-[#FF6B00]">
+              <div className="border-b-4 border-black p-4 bg-[var(--brutal-orange)]">
                 <h3 className="font-mono font-bold text-xl uppercase">Noter ce code</h3>
               </div>
               <form onSubmit={handleSubmitRating} className="p-6 space-y-4">
@@ -192,7 +192,7 @@ export const CodeDetails: React.FC = () => {
                         key={star}
                         type="button"
                         onClick={() => setRating(star)}
-                        className="brutal-border p-3 hover:bg-[#FF6B00] transition-all"
+                        className="brutal-border p-3 hover:bg-[var(--brutal-orange)] transition-all"
                       >
                         <Star
                           className={`w-6 h-6 ${
@@ -223,7 +223,7 @@ export const CodeDetails: React.FC = () => {
           {/* Ratings */}
           {ratings.length > 0 && (
             <div className="brutal-border bg-white brutal-shadow">
-              <div className="border-b-4 border-black p-4 bg-[#E5E5E5]">
+              <div className="border-b-4 border-black p-4 bg-[var(--brutal-gray)]">
                 <div className="flex items-center space-x-2">
                   <MessageSquare className="w-5 h-5" />
                   <h3 className="font-mono font-bold text-xl uppercase">
@@ -264,7 +264,7 @@ export const CodeDetails: React.FC = () => {
         <div className="space-y-6">
           {/* Stats */}
           <div className="brutal-border bg-white brutal-shadow">
-            <div className="border-b-4 border-black p-4 bg-[#FF6B00]">
+            <div className="border-b-4 border-black p-4 bg-[var(--brutal-orange)]">
               <h3 className="font-mono font-bold uppercase">Statistiques</h3>
             </div>
             <div className="p-6 space-y-4">
@@ -296,7 +296,7 @@ export const CodeDetails: React.FC = () => {
 
           {/* Author */}
           <div className="brutal-border bg-white brutal-shadow">
-            <div className="border-b-4 border-black p-4 bg-[#E5E5E5]">
+            <div className="border-b-4 border-black p-4 bg-[var(--brutal-gray)]">
               <h3 className="font-mono font-bold uppercase">Publié par</h3>
             </div>
             <div className="p-6">

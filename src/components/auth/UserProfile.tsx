@@ -52,7 +52,7 @@ export const UserProfile: React.FC = () => {
   if (authLoading || !user) {
     return (
       <Container>
-        <div className="brutal-border bg-[#E5E5E5] h-96 animate-pulse" />
+        <div className="brutal-border bg-[var(--brutal-gray)] h-96 animate-pulse" />
       </Container>
     );
   }
@@ -61,7 +61,7 @@ export const UserProfile: React.FC = () => {
     <Container>
       {/* Profile Header */}
       <div className="brutal-border bg-white brutal-shadow mb-8">
-        <div className="border-b-4 border-black p-6 bg-[#FF6B00]">
+        <div className="border-b-4 border-black p-6 bg-[var(--brutal-orange)]">
           <div className="flex items-center space-x-4">
             <div className="brutal-border bg-black text-white p-4">
               <User className="w-12 h-12" />
@@ -99,25 +99,25 @@ export const UserProfile: React.FC = () => {
               title="Codes publiés"
               value={stats.total_codes}
               icon="codes"
-              color="#FF6B00"
+              color="var(--brutal-orange)"
             />
             <StatsCard
               title="Vues totales"
               value={stats.total_views}
               icon="views"
-              color="#00FF00"
+              color="var(--brutal-green)"
             />
             <StatsCard
               title="Copies totales"
               value={stats.total_copies}
               icon="copies"
-              color="#FF00FF"
+              color="var(--brutal-pink)"
             />
             <StatsCard
               title="Validations"
               value={stats.total_confirmations}
               icon="confirmations"
-              color="#00FFFF"
+              color="var(--brutal-teal)"
             />
           </div>
         </div>
