@@ -1,0 +1,31 @@
+/* ==========================================================================
+   TOKENS GLOBAUX (Variables natives CSS)
+   ========================================================================== */
+
+:root {
+	/* Couleurs de base (à adapter avec ton design) */
+	--primary: #2563eb;
+	--primary-hover: #1d4ed8;
+	--bg-color: #ffffff;
+	--text-color: #0f172a;
+
+	/* Bordures */
+	--radius-sm: 4px;
+	--radius-md: 8px;
+	--radius-lg: 12px;
+
+	/* Espacements */
+	--space-2: 0.5rem;
+	--space-4: 1rem;
+	--space-6: 1.5rem;
+	--space-8: 2rem;
+}
+
+/* Thème sombre natif (s'active si le root ou body a la classe .dark) */
+:root.dark,
+.dark {
+	--primary: #3b82f6;
+	--primary-hover: #60a5fa;
+	--bg-color: #0f172a;
+	--text-color: #f8fafc;
+}

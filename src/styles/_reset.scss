@@ -1,0 +1,26 @@
+/* ==========================================================================
+   RESET CSS & STYLES DE BASE GLOBAUX
+   Attention : Tailwind applique déjà un reset puissant dans index.scss.
+   Ici, on ajoute uniquement nos personnalisations globales de base liées
+   aux tokens qu'on vient de définir.
+   ========================================================================== */
+
+body {
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	transition: background-color 0.2s ease, color 0.2s ease; // Transition douce pour le mode sombre
+}
+
+// Custom Scrollbar globale (exemple)
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--primary);
+	border-radius: var(--radius-md);
+}
