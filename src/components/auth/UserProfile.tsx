@@ -14,7 +14,7 @@ export const UserProfile: React.FC = () => {
   const navigate = useNavigate();
   const user = useAuthStore(s => s.user);
   const authLoading = !useAuthStore(s => s.isReady);
-  const { stats, loading: statsLoading } = useUserStats(user?.id || '');
+  const { stats, loading: statsLoading } = useUserStats(user?.uid || '');
   const [userCodes, setUserCodes] = useState<Code[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -34,7 +34,7 @@ export const UserProfile: React.FC = () => {
       setLoading(true);
       // Récupérer tous les codes et filtrer par user_id côté client
       const allCodes = await api.fetchCodes({});
-      const userFilteredCodes = allCodes.filter(code => code.user_id === user.id);
+      const userFilteredCodes = allCodes.filter(code => code.user_id === user.uid);
 
       // Trier par date de création décroissante
       userFilteredCodes.sort((a, b) =>

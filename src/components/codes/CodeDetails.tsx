@@ -77,7 +77,7 @@ export const CodeDetails: React.FC = () => {
     try {
       await api.createRating({
         code_id: code.id,
-        user_id: user.id,
+        user_id: user.uid,
         rating,
         comment: comment || undefined,
       });

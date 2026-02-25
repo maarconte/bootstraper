@@ -1,14 +1,47 @@
 import React, { useState } from 'react';
 import { Database } from 'lucide-react';
-import { Button } from '../ui/Button';
-import { projectId, publicAnonKey } from '../../utils/supabase/info';
+import { Button } from '../ui/button';
+import { createCode } from '../../lib/api';
+
+const DUMMY_CODES = [
+  {
+    title: 'Stripe',
+    description: '50 000€ sans frais de traitement sur vos premiers encaissements',
+    code: 'STARTUP50',
+    category: 'FINANCE',
+    provider: 'Stripe',
+    discount: '50 000€ offerts',
+    expiry_date: '2026-12-31',
+    user_id: 'system',
+  },
+  {
+    title: 'Qonto',
+    description: '3 mois offerts sur tous les forfaits pro pour les créateurs',
+    code: 'QONTOXCODE',
+    category: 'FINANCE',
+    provider: 'Qonto',
+    discount: '3 mois gratuits',
+    expiry_date: null,
+    user_id: 'system',
+  },
+  {
+    title: 'AWS',
+    description: '100 000$ de crédits cloud pour les startups via AWS Activate',
+    code: 'AWSSTART25',
+    category: 'HOSTING',
+    provider: 'Amazon Web Services',
+    discount: '100k$ crédits',
+    expiry_date: '2026-06-30',
+    user_id: 'system',
+  }
+];
 
 export const SeedButton: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
   const handleSeed = async () => {
-    if (!confirm('Voulez-vous initialiser la base de données avec des codes de démonstration ?')) {
+    if (!confirm('Voulez-vous initialiser Firebase avec des codes de démonstration ?')) {
       return;
     }
 
@@ -16,23 +49,10 @@ export const SeedButton: React.FC = () => {
     setMessage(null);
 
     try {
-      const response = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-5855fea6/seed`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${publicAnonKey}`,
-          },
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error('Failed to seed database');
+      for (const c of DUMMY_CODES) {
+        await createCode(c);
       }
-
-      const result = await response.json();
-      setMessage('✓ Base de données initialisée avec succès ! Rechargez la page.');
+      setMessage('✓ Firebase initialisé avec succès ! Rechargez la page.');
     } catch (error) {
       console.error('Error seeding database:', error);
       setMessage('❌ Erreur lors de l\'initialisation');

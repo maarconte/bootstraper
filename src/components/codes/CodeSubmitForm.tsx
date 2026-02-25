@@ -38,7 +38,7 @@ export const CodeSubmitForm: React.FC = () => {
       const newCode = await api.createCode({
         ...formData,
         expiry_date: formData.expiry_date || null,
-        user_id: user.id,
+        user_id: user.uid,
       });
 
       navigate(`/code/${newCode.id}`);
