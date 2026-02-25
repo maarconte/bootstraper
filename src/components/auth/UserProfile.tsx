@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User, Calendar, TrendingUp } from 'lucide-react';
-import { useAuth, useUserStats } from '../../lib/hooks';
+import { useUserStats } from '../../lib/hooks';
+import { useAuthStore } from '../../store/authStore';
 import { Container } from '../layout/Container';
 import { StatsCard } from '../stats/StatsCard';
 import { CodeGrid } from '../codes/CodeGrid';
@@ -11,7 +12,8 @@ import { Code } from '../../types';
 
 export const UserProfile: React.FC = () => {
   const navigate = useNavigate();
-  const { user, loading: authLoading } = useAuth();
+  const user = useAuthStore(s => s.user);
+  const authLoading = !useAuthStore(s => s.isReady);
   const { stats, loading: statsLoading } = useUserStats(user?.id || '');
   const [userCodes, setUserCodes] = useState<Code[]>([]);
   const [loading, setLoading] = useState(true);
@@ -33,9 +35,9 @@ export const UserProfile: React.FC = () => {
       // Récupérer tous les codes et filtrer par user_id côté client
       const allCodes = await api.fetchCodes({});
       const userFilteredCodes = allCodes.filter(code => code.user_id === user.id);
-      
+
       // Trier par date de création décroissante
-      userFilteredCodes.sort((a, b) => 
+      userFilteredCodes.sort((a, b) =>
         new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
       );
 
@@ -78,7 +80,7 @@ export const UserProfile: React.FC = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="p-6">
           <p className="font-mono">
             <strong>Email:</strong> {user.email}

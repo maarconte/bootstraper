@@ -2,11 +2,11 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Plus, User, LogOut, LogIn } from 'lucide-react';
 import { Button } from '../ui/Button';
-import { useAuth } from '../../lib/hooks';
-import { signOut } from '../../lib/supabase';
+import { useAuthStore } from '../../store/authStore';
 
 export const Header: React.FC = () => {
-  const { user } = useAuth();
+  const user = useAuthStore(s => s.user);
+  const signOut = useAuthStore(s => s.signOut);
   const location = useLocation();
 
   const handleSignOut = async () => {
