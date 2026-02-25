@@ -3,29 +3,66 @@
    ========================================================================== */
 
 :root {
-	/* Couleurs de base (à adapter avec ton design) */
-	--primary: #2563eb;
-	--primary-hover: #1d4ed8;
-	--bg-color: #ffffff;
-	--text-color: #0f172a;
+	/* Typographie */
+	--font-mono: "Space Mono", "Courier New", monospace;
+	--font-size: 16px;
+
+	/* Couleurs Brutalistes (Source de vérité) */
+	--brutal-black: #000;
+	--brutal-white: #fff;
+
+	--brutal-purple: #482AA2;
+	--brutal-purple-dark: #281759;
+	--brutal-purple-light: #c4b5fd;
+
+	--brutal-yellow: #FDC500;
+	--brutal-yellow-dark: #EB9D00;
+
+	--brutal-teal: #0FC7D2;
+	--brutal-teal-dark: #0C9DA6;
+
+	--brutal-pink: #DE3D64;
+	--brutal-pink-dark: #B23150;
+
+	--brutal-green: #9FDF6C;
+	--brutal-green-dark: #7FB256;
+
+	--brutal-cream: #fff9e6;
+	--brutal-orange: #ff6b00;
+
+	/* Variables Sémantiques (Mappées sur les brutalistes) */
+	--primary: var(--brutal-purple);
+	--primary-hover: var(--brutal-purple-dark);
+	--bg-color: var(--brutal-cream);
+	--text-color: var(--brutal-black);
+
+	--background: var(--brutal-cream);
+	--foreground: var(--brutal-black);
+	--border: var(--brutal-black);
 
 	/* Bordures */
-	--radius-sm: 4px;
-	--radius-md: 8px;
-	--radius-lg: 12px;
+	--border-width: 4px;
+	--radius: 0px;
+	--radius-sm: 0px;
+	--radius-md: 0px;
+	--radius-lg: 0px;
 
-	/* Espacements */
+	/* Espacements de base */
 	--space-2: 0.5rem;
 	--space-4: 1rem;
 	--space-6: 1.5rem;
 	--space-8: 2rem;
 }
 
-/* Thème sombre natif (s'active si le root ou body a la classe .dark) */
+/* Thème sombre natif */
 :root.dark,
 .dark {
-	--primary: #3b82f6;
-	--primary-hover: #60a5fa;
-	--bg-color: #0f172a;
-	--text-color: #f8fafc;
+	--primary: var(--brutal-purple-light);
+	--primary-hover: var(--brutal-purple);
+	--bg-color: var(--brutal-black);
+	--text-color: var(--brutal-cream);
+
+	--background: var(--brutal-black);
+	--foreground: var(--brutal-cream);
+	--border: var(--brutal-white);
 }

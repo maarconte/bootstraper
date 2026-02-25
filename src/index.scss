@@ -1364,26 +1364,6 @@
 }
 
 
-:root {
-  --font-mono: "Space Mono", "Courier New", monospace;
-  --font-size: 16px;
-  --brutal-black: #000;
-  --brutal-white: #fff;
-  --brutal-purple: #8b5cf6;
-  --brutal-purple-dark: #6d28d9;
-  --brutal-purple-light: #c4b5fd;
-  --brutal-yellow: #fcd34d;
-  --brutal-yellow-dark: #f59e0b;
-  --brutal-teal: #14b8a6;
-  --brutal-teal-dark: #0d9488;
-  --brutal-cream: #fff9e6;
-  --brutal-orange: #ff6b00;
-  --background: var(--brutal-cream);
-  --foreground: var(--brutal-black);
-  --border: var(--brutal-black);
-  --border-width: 4px;
-  --radius: 0px;
-}
 
 @keyframes brutal-slide-in {
   from {
