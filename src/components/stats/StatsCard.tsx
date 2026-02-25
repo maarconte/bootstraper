@@ -8,7 +8,7 @@ interface StatsCardProps {
   color?: string;
 }
 
-export const StatsCard: React.FC<StatsCardProps> = ({ title, value, icon, color = '#FF6B00' }) => {
+export const StatsCard: React.FC<StatsCardProps> = ({ title, value, icon, color = 'var(--brutal-orange)' }) => {
   const icons = {
     views: Eye,
     copies: Copy,

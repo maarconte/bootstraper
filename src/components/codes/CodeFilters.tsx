@@ -25,7 +25,7 @@ export const CodeFilters: React.FC<CodeFiltersProps> = ({ filters, onFilterChang
   return (
     <div className="brutal-border bg-white brutal-shadow mb-8">
       {/* Header */}
-      <div className="border-b-4 border-black p-4 bg-[#FF6B00]">
+      <div className="border-b-4 border-black p-4 bg-[var(--brutal-orange)]">
         <div className="flex items-center space-x-2">
           <Filter className="w-6 h-6" />
           <h2 className="font-mono font-bold text-xl uppercase">Filtres</h2>
@@ -80,7 +80,7 @@ export const CodeFilters: React.FC<CodeFiltersProps> = ({ filters, onFilterChang
             <label className="block mb-2 font-mono font-bold uppercase text-sm">
               Options
             </label>
-            <label className="flex items-center space-x-3 brutal-border bg-white px-4 py-3 cursor-pointer hover:bg-[#E5E5E5] transition-colors">
+            <label className="flex items-center space-x-3 brutal-border bg-white px-4 py-3 cursor-pointer hover:bg-[var(--brutal-gray)] transition-colors">
               <input
                 type="checkbox"
                 checked={filters.showExpired}

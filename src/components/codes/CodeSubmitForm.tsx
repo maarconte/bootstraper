@@ -179,7 +179,7 @@ export const CodeSubmitForm: React.FC = () => {
           </div>
 
           {/* Info */}
-          <div className="brutal-border bg-[#E5E5E5] p-4">
+          <div className="brutal-border bg-[var(--brutal-gray)] p-4">
             <p className="font-mono text-sm">
               <strong>Note:</strong> Assurez-vous que le code est valide et vérifiable.
               Les codes invalides peuvent être supprimés par la communauté.

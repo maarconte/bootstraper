@@ -56,7 +56,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
   return (
     <div className="brutal-border bg-white brutal-shadow max-w-md mx-auto">
       {/* Header */}
-      <div className="border-b-4 border-black p-6 bg-[#FF6B00]">
+      <div className="border-b-4 border-black p-6 bg-[var(--brutal-orange)]">
         <h2 className="font-mono font-bold text-2xl uppercase text-center">
           {mode === 'login' ? 'Connexion' : 'Inscription'}
         </h2>
@@ -130,14 +130,14 @@ export const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
           {mode === 'login' ? (
             <p>
               Pas encore de compte ?{' '}
-              <Link to="/signup" className="text-[#FF6B00] font-bold hover:underline">
+              <Link to="/signup" className="text-[var(--brutal-orange)] font-bold hover:underline">
                 S'inscrire
               </Link>
             </p>
           ) : (
             <p>
               Déjà un compte ?{' '}
-              <Link to="/login" className="text-[#FF6B00] font-bold hover:underline">
+              <Link to="/login" className="text-[var(--brutal-orange)] font-bold hover:underline">
                 Se connecter
               </Link>
             </p>

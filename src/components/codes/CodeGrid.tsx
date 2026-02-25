@@ -14,7 +14,7 @@ export const CodeGrid: React.FC<CodeGridProps> = ({ codes, loading }) => {
         {[...Array(6)].map((_, i) => (
           <div
             key={i}
-            className="brutal-border bg-[#E5E5E5] h-96 animate-pulse"
+            className="brutal-border bg-[var(--brutal-gray)] h-96 animate-pulse"
           />
         ))}
       </div>
