@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { useAuthStore } from './store/authStore';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { Container } from './components/layout/Container';
@@ -71,7 +72,7 @@ const HomePage: React.FC = () => {
               </div>
               <h3 className="font-bold uppercase mb-2">Économisez des milliers d'€</h3>
               <p className="text-sm">
-                Accédez aux meilleurs codes de parrainage pour banques pro, outils SaaS, 
+                Accédez aux meilleurs codes de parrainage pour banques pro, outils SaaS,
                 hébergement et services essentiels.
               </p>
             </div>
@@ -81,7 +82,7 @@ const HomePage: React.FC = () => {
               </div>
               <h3 className="font-bold uppercase mb-2">Validé par la communauté</h3>
               <p className="text-sm">
-                Tous les codes sont notés et commentés par des entrepreneurs comme vous. 
+                Tous les codes sont notés et commentés par des entrepreneurs comme vous.
                 Fini les codes expirés !
               </p>
             </div>
@@ -91,7 +92,7 @@ const HomePage: React.FC = () => {
               </div>
               <h3 className="font-bold uppercase mb-2">Partagez vos trouvailles</h3>
               <p className="text-sm">
-                Vous avez un bon plan ? Partagez-le avec la communauté et aidez 
+                Vous avez un bon plan ? Partagez-le avec la communauté et aidez
                 d'autres entrepreneurs à démarrer.
               </p>
             </div>
@@ -175,6 +176,13 @@ const SignupPage: React.FC = () => {
 
 // Main App
 export default function App() {
+  const initListener = useAuthStore(s => s.initListener);
+
+  useEffect(() => {
+    const unsubscribe = initListener();
+    return () => unsubscribe();
+  }, [initListener]);
+
   return (
     <Router>
       <div className="min-h-screen flex flex-col bg-white">

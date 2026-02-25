@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { Input, TextArea, Select } from '../ui/form-components';
 import { Button } from '../ui/button';
 import { CATEGORIES, Category } from '../../types';
-import { useAuth } from '../../lib/hooks';
+import { useAuthStore } from '../../store/authStore';
 import * as api from '../../lib/api';
 import { AlertCircle } from 'lucide-react';
 
 export const CodeSubmitForm: React.FC = () => {
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const user = useAuthStore(s => s.user);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -38,7 +38,7 @@ export const CodeSubmitForm: React.FC = () => {
       const newCode = await api.createCode({
         ...formData,
         expiry_date: formData.expiry_date || null,
-        user_id: user.id,
+        user_id: user.uid,
       });
 
       navigate(`/code/${newCode.id}`);

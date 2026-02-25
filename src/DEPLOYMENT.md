@@ -2,15 +2,15 @@
 
 ## 🎯 Prérequis
 
-- Compte Supabase (gratuit)
+- Compte Firebase (gratuit)
 - Navigateur moderne
 
 ## 📋 Étapes de Configuration
 
-### 1. Configuration Supabase (15 min)
+### 1. Configuration Firebase (15 min)
 
 #### A. Créer le projet
-1. Allez sur [supabase.com](https://supabase.com)
+1. Allez sur [firebase.com](https://firebase.com)
 2. Cliquez sur "New Project"
 3. Remplissez :
    - **Name**: codeshare
@@ -21,14 +21,14 @@
 #### B. Récupérer les credentials
 1. Dans votre projet, allez dans **Settings** > **API**
 2. Notez :
-   - **Project URL**: `https://xxxxx.supabase.co`
+   - **Project URL**: `https://xxxxx.firebase.co`
    - **Anon/Public Key**: `eyJhbG...`
 3. Ces valeurs sont déjà configurées dans Figma Make
 
 #### C. Créer les tables
 1. Allez dans **SQL Editor**
 2. Cliquez "New query"
-3. Copiez le contenu complet de `/supabase-schema.sql`
+3. Copiez le contenu complet de `/firebase-schema.sql`
 4. Cliquez "Run" (en bas à droite)
 5. Vérifiez les messages de succès
 
@@ -93,17 +93,17 @@ Si vous voulez ajouter des avatars plus tard :
 ### 3. Résolution des Problèmes Courants
 
 #### Erreur "Failed to fetch"
-**Cause**: Credentials Supabase incorrects
+**Cause**: Credentials Firebase incorrects
 **Solution**: 
-1. Vérifiez dans `/utils/supabase/info.tsx`
-2. Comparez avec Settings > API dans Supabase
+1. Vérifiez dans `/utils/firebase/info.tsx`
+2. Comparez avec Settings > API dans Firebase
 3. Rechargez l'application
 
 #### Erreur "relation does not exist"
 **Cause**: Tables non créées
 **Solution**:
 1. Retournez dans SQL Editor
-2. Réexécutez le script `/supabase-schema.sql`
+2. Réexécutez le script `/firebase-schema.sql`
 3. Vérifiez qu'aucune erreur n'apparaît
 
 #### Erreur "row-level security policy"
@@ -130,14 +130,14 @@ WHERE schemaname = 'public';
 **Solution**:
 1. Ouvrez la console (F12)
 2. Vérifiez les erreurs réseau
-3. Testez la requête dans Supabase:
+3. Testez la requête dans Firebase:
 ```sql
 SELECT * FROM codes;
 ```
 
 ### 4. Configuration Production
 
-#### A. Sécuriser Supabase
+#### A. Sécuriser Firebase
 1. **Réactiver email confirmation**:
    - Settings > Auth > ✅ Enable email confirmations
    
@@ -150,7 +150,7 @@ SELECT * FROM codes;
    - Configurez selon vos besoins
 
 #### B. Variables d'environnement
-Mettez à jour `/utils/supabase/info.tsx` avec vos vrais credentials:
+Mettez à jour `/utils/firebase/info.tsx` avec vos vrais credentials:
 ```typescript
 export const projectId = 'VOTRE_PROJECT_ID';
 export const publicAnonKey = 'VOTRE_ANON_KEY';
@@ -159,7 +159,7 @@ export const publicAnonKey = 'VOTRE_ANON_KEY';
 #### C. Domaine personnalisé
 1. Achetez votre domaine (CodeEntreprise.fr recommandé)
 2. Dans Figma Make, configurez le domaine custom
-3. Mettez à jour les CORS dans Supabase:
+3. Mettez à jour les CORS dans Firebase:
    - Settings > API > CORS
    - Ajoutez votre domaine
 
@@ -178,7 +178,7 @@ Ajoutez Google Analytics dans `index.html`:
 
 ### 5. Backup et Maintenance
 
-#### Backup automatique Supabase
+#### Backup automatique Firebase
 1. Settings > Database > Point-in-time Recovery
 2. Activé par défaut sur plan Pro
 3. Permet de restaurer jusqu'à 7 jours en arrière
@@ -193,7 +193,7 @@ COPY (SELECT * FROM profiles) TO '/tmp/profiles.csv' CSV HEADER;
 ```
 
 #### Monitoring
-1. Dashboard Supabase montre :
+1. Dashboard Firebase montre :
    - Nombre de requêtes
    - Temps de réponse
    - Erreurs
@@ -220,12 +220,12 @@ COPY (SELECT * FROM profiles) TO '/tmp/profiles.csv' CSV HEADER;
 
 En cas de problème :
 1. Vérifiez la console navigateur (F12)
-2. Consultez les logs Supabase (Logs Explorer)
+2. Consultez les logs Firebase (Logs Explorer)
 3. Relisez ce guide de A à Z
 
 ## ✅ Checklist de Lancement
 
-- [ ] Projet Supabase créé
+- [ ] Projet Firebase créé
 - [ ] Tables créées et vérifiées
 - [ ] RLS configuré et testé
 - [ ] Auth configuré (email)

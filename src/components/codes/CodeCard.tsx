@@ -4,7 +4,7 @@ import { Code } from '../../types';
 import { Badge } from '../ui/Badge';
 import { Button } from '../ui/Button';
 import { formatDate, isExpired, getDaysUntilExpiry, copyToClipboard } from '../../lib/utils';
-import { supabase } from '../../lib/supabase';
+import { incrementCodeCopies, incrementCodeViews } from '../../lib/api';
 import { Link } from 'react-router-dom';
 
 interface CodeCardProps {
@@ -21,12 +21,9 @@ export const CodeCard: React.FC<CodeCardProps> = ({ code, onCopy }) => {
     const success = await copyToClipboard(code.code);
     if (success) {
       setCopied(true);
-      
+
       // Incrémenter le compteur de copies
-      await supabase
-        .from('codes')
-        .update({ copies: (code.copies || 0) + 1 })
-        .eq('id', code.id);
+      await incrementCodeCopies(code.id).catch(console.error);
 
       setTimeout(() => setCopied(false), 2000);
       onCopy?.();
@@ -35,10 +32,7 @@ export const CodeCard: React.FC<CodeCardProps> = ({ code, onCopy }) => {
 
   const handleView = async () => {
     // Incrémenter le compteur de vues
-    await supabase
-      .from('codes')
-      .update({ views: (code.views || 0) + 1 })
-      .eq('id', code.id);
+    await incrementCodeViews(code.id).catch(console.error);
   };
 
   return (
@@ -57,7 +51,7 @@ export const CodeCard: React.FC<CodeCardProps> = ({ code, onCopy }) => {
               {code.provider}
             </p>
           </div>
-          
+
           {/* Rating */}
           {code.rating_count && code.rating_count > 0 && (
             <div className="flex items-center space-x-1 brutal-border bg-brutal-yellow px-2 py-1">

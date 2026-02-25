@@ -10,7 +10,8 @@ import {
   ArrowLeft,
   MessageSquare,
 } from 'lucide-react';
-import { useCode, useRatings, useAuth } from '../../lib/hooks';
+import { useCode, useRatings } from '../../lib/hooks';
+import { useAuthStore } from '../../store/authStore';
 import { Container } from '../layout/Container';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
@@ -21,7 +22,7 @@ import * as api from '../../lib/api';
 export const CodeDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const user = useAuthStore(s => s.user);
   const { code, loading, refetch } = useCode(id || '');
   const { ratings, refetch: refetchRatings } = useRatings(id || '');
 
@@ -76,7 +77,7 @@ export const CodeDetails: React.FC = () => {
     try {
       await api.createRating({
         code_id: code.id,
-        user_id: user.id,
+        user_id: user.uid,
         rating,
         comment: comment || undefined,
       });

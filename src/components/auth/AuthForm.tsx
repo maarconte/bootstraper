@@ -3,11 +3,12 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Mail, Lock, User, AlertCircle } from 'lucide-react';
 import { Input } from '../ui/form-components';
 import { Button } from '../ui/button';
-import { signIn, signUp } from '../../lib/supabase';
+import { useAuthStore } from '../../store/authStore';
 
 interface AuthFormProps {
   mode: 'login' | 'signup';
 }
+
 
 export const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
   const navigate = useNavigate();
@@ -18,6 +19,9 @@ export const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
     password: '',
     username: '',
   });
+
+  const signIn = useAuthStore(s => s.signIn);
+  const signUp = useAuthStore(s => s.signUp);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

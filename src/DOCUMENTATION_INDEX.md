@@ -15,7 +15,7 @@ Tous les fichiers de documentation pour naviguer facilement dans le projet.
    - Comment démarrer rapidement
 
 2. **[SUPABASE_SETUP.md](./SUPABASE_SETUP.md)** ⚡ IMPORTANT
-   - Configuration complète de Supabase
+   - Configuration complète de Firebase
    - Script SQL à exécuter
    - Tests de vérification
 
@@ -39,7 +39,7 @@ Tous les fichiers de documentation pour naviguer facilement dans le projet.
    - Composants React
    - Hooks personnalisés
 
-5. **[supabase-schema.sql](./supabase-schema.sql)** 🗄️
+5. **[firebase-schema.sql](./firebase-schema.sql)** 🗄️
    - Schéma complet de la base de données
    - Tables, indexes, policies
    - Functions et triggers
@@ -53,7 +53,7 @@ Tous les fichiers de documentation pour naviguer facilement dans le projet.
 
 6. **[DEPLOYMENT.md](./DEPLOYMENT.md)** 🚀
    - Guide de déploiement production
-   - Configuration avancée Supabase
+   - Configuration avancée Firebase
    - Sécurité et HTTPS
    - Variables d'environnement
    - Domaine personnalisé
@@ -96,20 +96,20 @@ Tous les fichiers de documentation pour naviguer facilement dans le projet.
 /
 ├── 📄 Documentation
 │   ├── QUICKSTART.md              # ⭐ Commencer ici
-│   ├── SUPABASE_SETUP.md          # Configuration Supabase
+│   ├── SUPABASE_SETUP.md          # Configuration Firebase
 │   ├── LAUNCH_CHECKLIST.md        # Checklist lancement
 │   ├── DEPLOYMENT.md              # Guide déploiement
 │   ├── README.md                  # Doc technique
 │   ├── FAQ.md                     # Questions fréquentes
 │   ├── SAMPLE_CODES.md            # Exemples de codes
 │   ├── SQL_COMMANDS.md            # Commandes SQL
-│   └── supabase-schema.sql        # Schéma database
+│   └── firebase-schema.sql        # Schéma database
 │
 ├── 🎨 Application
 │   ├── App.tsx                    # Point d'entrée
 │   ├── types/                     # Types TypeScript
 │   ├── lib/                       # Logique métier
-│   │   ├── supabase.ts           # Client Supabase
+│   │   ├── firebase.ts           # Client Firebase
 │   │   ├── hooks.ts              # Hooks React
 │   │   └── utils.ts              # Utilitaires
 │   ├── components/                # Composants React
@@ -121,8 +121,8 @@ Tous les fichiers de documentation pour naviguer facilement dans le projet.
 │   ├── styles/
 │   │   └── globals.css           # Styles brutalist
 │   └── utils/
-│       └── supabase/
-│           └── info.tsx          # Credentials Supabase
+│       └── firebase/
+│           └── info.tsx          # Credentials Firebase
 │
 └── 📦 Configuration
     └── package.json               # Dépendances NPM
@@ -138,7 +138,7 @@ Tous les fichiers de documentation pour naviguer facilement dans le projet.
 → [QUICKSTART.md](./QUICKSTART.md) → [SUPABASE_SETUP.md](./SUPABASE_SETUP.md)
 
 #### Comprendre l'architecture
-→ [README.md](./README.md) → [supabase-schema.sql](./supabase-schema.sql)
+→ [README.md](./README.md) → [firebase-schema.sql](./firebase-schema.sql)
 
 #### Déployer en production
 → [DEPLOYMENT.md](./DEPLOYMENT.md) → [LAUNCH_CHECKLIST.md](./LAUNCH_CHECKLIST.md)
@@ -150,7 +150,7 @@ Tous les fichiers de documentation pour naviguer facilement dans le projet.
 → [FAQ.md](./FAQ.md) → [SQL_COMMANDS.md](./SQL_COMMANDS.md)
 
 #### Gérer la base de données
-→ [SQL_COMMANDS.md](./SQL_COMMANDS.md) → [supabase-schema.sql](./supabase-schema.sql)
+→ [SQL_COMMANDS.md](./SQL_COMMANDS.md) → [firebase-schema.sql](./firebase-schema.sql)
 
 ---
 
@@ -158,12 +158,12 @@ Tous les fichiers de documentation pour naviguer facilement dans le projet.
 
 ### Authentification
 - Configuration : [SUPABASE_SETUP.md § 3](./SUPABASE_SETUP.md#3-configurer-lauthentification)
-- Code : `/lib/supabase.ts`, `/lib/hooks.ts`
+- Code : `/lib/firebase.ts`, `/lib/hooks.ts`
 - Composants : `/components/auth/AuthForm.tsx`
 - FAQ : [FAQ.md § Sécurité](./FAQ.md#sécurité--confidentialité)
 
 ### Base de Données
-- Schéma : [supabase-schema.sql](./supabase-schema.sql)
+- Schéma : [firebase-schema.sql](./firebase-schema.sql)
 - Architecture : [README.md § Structure DB](./README.md#-structure-de-la-base-de-données)
 - Requêtes : [SQL_COMMANDS.md](./SQL_COMMANDS.md)
 - Backup : [DEPLOYMENT.md § Backup](./DEPLOYMENT.md#backup-et-maintenance)
@@ -185,8 +185,8 @@ Tous les fichiers de documentation pour naviguer facilement dans le projet.
 - FAQ : [FAQ.md § Performance](./FAQ.md#performance)
 
 ### Sécurité
-- RLS : [supabase-schema.sql § Security](./supabase-schema.sql)
-- Configuration : [DEPLOYMENT.md § Sécurité](./DEPLOYMENT.md#sécuriser-supabase)
+- RLS : [firebase-schema.sql § Security](./firebase-schema.sql)
+- Configuration : [DEPLOYMENT.md § Sécurité](./DEPLOYMENT.md#sécuriser-firebase)
 - Tests : [LAUNCH_CHECKLIST.md § Sécurité](./LAUNCH_CHECKLIST.md#-phase-5--sécurité--production-15-min)
 
 ---
@@ -225,7 +225,7 @@ Tous les fichiers de documentation pour naviguer facilement dans le projet.
 
 ### Debugging
 - Console Browser : F12 → Console
-- Supabase Logs : Dashboard → Logs Explorer
+- Firebase Logs : Dashboard → Logs Explorer
 - SQL Testing : [SQL_COMMANDS.md](./SQL_COMMANDS.md)
 
 ---
@@ -291,7 +291,7 @@ Voir [QUICKSTART.md § Roadmap](./QUICKSTART.md#-roadmap) pour plus de détails.
 ## 📞 SUPPORT
 
 ### Ressources Officielles
-- **Supabase** : https://supabase.com/docs
+- **Firebase** : https://firebase.com/docs
 - **React** : https://react.dev
 - **Tailwind CSS** : https://tailwindcss.com
 - **TypeScript** : https://www.typescriptlang.org
@@ -340,7 +340,7 @@ Cette plateforme a été créée pour aider les entrepreneurs à économiser et 
 
 ### Essentiels
 - [🚀 Démarrage Rapide](./QUICKSTART.md)
-- [⚡ Configuration Supabase](./SUPABASE_SETUP.md)
+- [⚡ Configuration Firebase](./SUPABASE_SETUP.md)
 - [✅ Checklist Lancement](./LAUNCH_CHECKLIST.md)
 
 ### Documentation
@@ -351,7 +351,7 @@ Cette plateforme a été créée pour aider les entrepreneurs à économiser et 
 ### Avancé
 - [🚀 Guide Déploiement](./DEPLOYMENT.md)
 - [🔧 Commandes SQL](./SQL_COMMANDS.md)
-- [🗄️ Schéma Database](./supabase-schema.sql)
+- [🗄️ Schéma Database](./firebase-schema.sql)
 
 ---
 

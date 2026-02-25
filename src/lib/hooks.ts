@@ -22,7 +22,7 @@ export const useCodes = (filters: FilterState) => {
         sortBy: filters.sortBy,
         showExpired: filters.showExpired,
       });
-      
+
       setCodes(data);
       setError(null);
     } catch (err) {
@@ -109,27 +109,4 @@ export const useUserStats = (userId: string) => {
   };
 
   return { stats, loading, refetch: fetchStats };
-};
-
-// Hook pour l'authentification
-export const useAuth = () => {
-  const [user, setUser] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Vérifier la session actuelle
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-      setLoading(false);
-    });
-
-    // Écouter les changements d'auth
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
-
-  return { user, loading };
 };
