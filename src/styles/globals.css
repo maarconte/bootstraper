@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Neo-Brutalist Design Tokens */
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+  --font-size: 16px;
+  
+  /* Palette colorée inspirée de l'image - Neo-Brutalist Style */
+  --brutal-black: #000000;
+  --brutal-white: #FFFFFF;
+  
+  /* Couleurs principales de l'image */
+  --brutal-purple: #8B5CF6;        /* Violet principal (grapes drink) */
+  --brutal-purple-dark: #6D28D9;   /* Violet foncé pour contraste */
+  --brutal-purple-light: #C4B5FD;  /* Violet clair pour backgrounds */
+  
+  --brutal-yellow: #FCD34D;        /* Jaune accent (éléments décoratifs) */
+  --brutal-yellow-dark: #F59E0B;   /* Jaune foncé */
+  
+  --brutal-teal: #14B8A6;          /* Vert/Teal (section basse) */
+  --brutal-teal-dark: #0D9488;     /* Teal foncé */
+  
+  --brutal-cream: #FFF9E6;         /* Beige/Crème (fond) */
+  --brutal-orange: #FF6B00;        /* Orange conservé pour accents */
+  
+  --background: var(--brutal-cream);
+  --foreground: var(--brutal-black);
+  --border: var(--brutal-black);
+  --border-width: 4px;
+  --radius: 0px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+}
+
+@layer base {
+  * {
+    @apply border-black;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--brutal-cream);
+    font-family: var(--font-mono);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Brutal Typography */
+  h1 {
+    font-family: var(--font-mono);
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  button, label, input {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Brutal Utilities */
+@layer utilities {
+  .brutal-border {
+    border: 4px solid var(--brutal-black);
+  }
+
+  .brutal-border-thick {
+    border: 5px solid var(--brutal-black);
+  }
+
+  .brutal-shadow {
+    box-shadow: 8px 8px 0px var(--brutal-black);
+  }
+
+  .brutal-shadow-sm {
+    box-shadow: 4px 4px 0px var(--brutal-black);
+  }
+  
+  /* Ombres colorées inspirées de l'image */
+  .brutal-shadow-purple {
+    box-shadow: 8px 8px 0px var(--brutal-purple);
+  }
+  
+  .brutal-shadow-yellow {
+    box-shadow: 8px 8px 0px var(--brutal-yellow);
+  }
+  
+  .brutal-shadow-teal {
+    box-shadow: 8px 8px 0px var(--brutal-teal);
+  }
+
+  .brutal-hover-invert {
+    transition: all 0.1s ease;
+  }
+
+  .brutal-hover-invert:hover {
+    background-color: var(--brutal-black);
+    color: var(--brutal-white);
+  }
+  
+  /* Nouveaux hovers colorés */
+  .brutal-hover-purple {
+    transition: all 0.1s ease;
+  }
+  
+  .brutal-hover-purple:hover {
+    background-color: var(--brutal-purple);
+    color: var(--brutal-white);
+  }
+  
+  .brutal-hover-teal {
+    transition: all 0.1s ease;
+  }
+  
+  .brutal-hover-teal:hover {
+    background-color: var(--brutal-teal);
+    color: var(--brutal-white);
+  }
+  
+  /* Backgrounds colorés */
+  .bg-brutal-purple {
+    background-color: var(--brutal-purple);
+  }
+  
+  .bg-brutal-purple-light {
+    background-color: var(--brutal-purple-light);
+  }
+  
+  .bg-brutal-yellow {
+    background-color: var(--brutal-yellow);
+  }
+  
+  .bg-brutal-teal {
+    background-color: var(--brutal-teal);
+  }
+  
+  .bg-brutal-cream {
+    background-color: var(--brutal-cream);
+  }
+  
+  /* Text colors */
+  .text-brutal-purple {
+    color: var(--brutal-purple);
+  }
+  
+  .text-brutal-yellow {
+    color: var(--brutal-yellow-dark);
+  }
+  
+  .text-brutal-teal {
+    color: var(--brutal-teal);
+  }
+  
+  /* Border colors */
+  .border-brutal-purple {
+    border-color: var(--brutal-purple);
+  }
+  
+  .border-brutal-yellow {
+    border-color: var(--brutal-yellow-dark);
+  }
+  
+  .border-brutal-teal {
+    border-color: var(--brutal-teal);
+  }
+
+  .brutal-grid-asymmetric {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem 1.5rem;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Animations brutales */
+@keyframes brutal-slide-in {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes brutal-pop {
+  0% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-brutal-slide {
+  animation: brutal-slide-in 0.3s ease-out;
+}
+
+.animate-brutal-pop {
+  animation: brutal-pop 0.2s ease-out;
+}
+
+/* Custom scrollbar brutal */
+::-webkit-scrollbar {
+  width: 16px;
+  background: var(--brutal-white);
+  border-left: 4px solid var(--brutal-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brutal-black);
+  border: 2px solid var(--brutal-white);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brutal-orange);
+}
